@@ -12,13 +12,18 @@ export const transformService = async (data: Transform) => {
     throw new AppError("Image does not exist");
   }
 
+  const fileExt = path
+    .extname(_path)
+    .split(".")[1] as Transform["options"]["format"];
+  const format = data.options.format ?? fileExt;
+
   const image = fs.readFileSync(_path);
   const resize = sharp(image).resize({
     height: data.options.height,
     width: data.options.width,
   });
 
-  switch (data.options.format) {
+  switch (format) {
     case "png":
       resize.png({ quality: data.options.quality });
       break;
@@ -28,6 +33,9 @@ export const transformService = async (data: Transform) => {
     case "webp":
       resize.webp({ quality: data.options.quality });
       break;
+
+    default:
+      throw new AppError("Invalid format");
   }
 
   const result = await resize.toBuffer({ resolveWithObject: true });
