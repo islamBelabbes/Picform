@@ -10,25 +10,23 @@ _This project is intended solely for testing and educational purposes. Not recom
 
 - [Installation](#installation)
 
+---
+
 ## Features
 
-- **Image Transformation**
+- 🖼️ **Image Transformation**
+  - 📏 Resize images (width/height)
+  - 🖼️ Output formats: PNG, JPG, WebP
+  - 🎛️ Adjustable quality (1–100)
+  - ⚡ Powered by [Sharp](https://sharp.pixelplumbing.com/) for high-performance processing
 
-- Resize images (width/height)
+- 🚦 **Rate Limiting**
+  - ⏱️ Built-in request throttling using [Upstash](https://upstash.com/)
 
-- Multiple output formats (PNG, JPG, WebP)
+- 🛡️ **Input Validation**
+  - ✅ Schema validation with [Zod](https://zod.dev/)
 
-- Quality adjustment (1-100)
-
-- Powered by Sharp for optimal performance
-
-- **Rate Limiting**
-
-- Built-in rate limiting using Upstash
-
-- **Input Validation**
-
-- Request validation using Zod
+---
 
 ## Installation
 
