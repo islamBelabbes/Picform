@@ -16,8 +16,8 @@
     "noEmit": false,
     "esModuleInterop": true,
     "paths": {
-      "@lib/*": ["./lib/*"],
-      "@features/*": ["./features/*"]
+      "@lib/*": ["./src/lib/*"],
+      "@features/*": ["./src/features/*"]
     }
   },
   "include": ["./**/*"],
