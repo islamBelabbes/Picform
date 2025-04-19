@@ -4,7 +4,7 @@ declare global {
   namespace Express {
     interface Request {
       transformOptions?: Transform["options"];
-      transformUrl?: Transform["url"];
+      transformPath?: Transform["path"];
     }
   }
 }

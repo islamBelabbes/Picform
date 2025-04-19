@@ -8,7 +8,7 @@ export const parseTransformRequest = (
   next: NextFunction
 ) => {
   const _options = req.params[0];
-  const _url = req.params[1];
+  const path = req.params[1];
 
   let options = _options
     .split(",")
@@ -19,7 +19,7 @@ export const parseTransformRequest = (
     }, {});
 
   const validated = transformSchema.safeParse({
-    url: _url,
+    path,
     options,
   });
 
@@ -36,7 +36,7 @@ export const parseTransformRequest = (
   }
 
   req.transformOptions = validated.data.options;
-  req.transformUrl = validated.data.url;
+  req.transformPath = validated.data.path;
 
   next();
 };
@@ -46,14 +46,14 @@ export const rateLimit = async (
   res: Response,
   next: NextFunction
 ) => {
-  const url = req.transformUrl;
+  const path = req.transformPath;
 
-  if (!url) {
+  if (!path) {
     res.status(400).send("middleware missing");
     return;
   }
 
-  const key = `${req.ip}-${url}`;
+  const key = `${req.ip}-${path}`;
   const limit = await ratelimit.limit(key);
   if (!limit.success) {
     const retry = Math.max(0, Math.floor((limit.reset - Date.now()) / 1000));

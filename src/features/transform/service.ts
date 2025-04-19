@@ -6,7 +6,7 @@ import sharp from "sharp";
 import { UPLOAD_PATH } from "@lib/constants";
 
 export const transformService = async (data: Transform) => {
-  const _path = path.join(process.cwd(), UPLOAD_PATH, data.url);
+  const _path = path.join(process.cwd(), UPLOAD_PATH, data.path);
   const imageExists = fs.existsSync(_path);
   if (!imageExists) {
     throw new AppError("Image does not exist");

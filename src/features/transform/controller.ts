@@ -4,15 +4,15 @@ import { safe } from "@lib/safe";
 import { AppError } from "@lib/errors";
 
 export const transformController = async (req: Request, res: Response) => {
-  const url = req.transformUrl;
+  const path = req.transformPath;
   const options = req.transformOptions;
 
-  if (!options || !url) {
+  if (!options || !path) {
     res.status(400).send("middleware missing");
     return;
   }
 
-  const data = await safe(transformService({ url, options }));
+  const data = await safe(transformService({ path, options }));
   if (!data.success) {
     if (data.error instanceof AppError) {
       res.status(400).send({

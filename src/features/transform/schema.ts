@@ -3,13 +3,13 @@ import { z } from "zod";
 const format = z.enum(["png", "jpg", "webp"]);
 
 export const transformSchema = z.object({
-  url: z.custom<`${string}.${z.infer<typeof format>}`>(
+  path: z.custom<`${string}.${z.infer<typeof format>}`>(
     (val) => {
       if (typeof val !== "string") return false;
       return /\.(png|jpg|webp)$/i.test(val);
     },
     {
-      message: "URL must end with .png, .jpg, or .webp",
+      message: "Path must end with .png, .jpg, or .webp",
     }
   ),
   options: z.object({
