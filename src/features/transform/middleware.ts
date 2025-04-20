@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express";
+import { type NextFunction, type Request, type Response } from "express";
 import { transformSchema } from "./schema";
 import { ratelimit } from "@lib/upstach";
 
@@ -10,11 +10,16 @@ export const parseTransformRequest = (
   const _options = req.params[0];
   const path = req.params[1];
 
+  if (!_options || !path) {
+    res.status(400).send("params missing");
+    return;
+  }
+
   let options = _options
     .split(",")
     .reduce<Record<string, unknown>>((acc, current) => {
       const [key, value] = current.split("=");
-      acc[key] = value;
+      acc[key!] = value;
       return acc;
     }, {});
 

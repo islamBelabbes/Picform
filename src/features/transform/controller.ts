@@ -1,4 +1,4 @@
-import { Response, Request } from "express";
+import { type Response, type Request } from "express";
 import { transformService } from "./service";
 import { safe } from "@lib/safe";
 import { AppError } from "@lib/errors";

@@ -1,5 +1,5 @@
 import { AppError } from "@lib/errors";
-import { Transform } from "./schema";
+import { type Transform } from "./schema";
 import fs from "fs";
 import path from "path";
 import sharp from "sharp";
