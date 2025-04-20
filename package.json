@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "dev": "tsx --watch --env-file=.env server.ts"
+    "dev": "tsx --watch --env-file=.env server.ts",
+    "build": "tsup src/",
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "@upstash/ratelimit": "^2.0.5",
@@ -12,6 +14,7 @@
     "@types/express": "^5.0.1",
     "tsconfig-paths": "^4.2.0",
     "tsup": "^8.4.0",
-    "tsx": "^4.19.3"
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3"
   }
 }
