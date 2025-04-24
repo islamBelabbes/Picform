@@ -1,4 +1,4 @@
-import { Transform } from "./src/features/transform/schema";
+import { Transform } from "@features/transform/schema";
 
 declare global {
   namespace Express {
